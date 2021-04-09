@@ -161,8 +161,7 @@ void RunAttackRandom(CXPLAT_SOCKET* Binding, uint16_t Length, bool ValidQuic)
             Binding,
             &LocalAddress,
             &ServerAddress,
-            SendData,
-            (uint16_t)CxPlatProcCurrentNumber())));
+            SendData)));
     }
 }
 
@@ -292,8 +291,7 @@ void RunAttackValidInitial(CXPLAT_SOCKET* Binding)
             Binding,
             &LocalAddress,
             &ServerAddress,
-            SendData,
-            (uint16_t)CxPlatProcCurrentNumber())));
+            SendData)));
     }
 }
 

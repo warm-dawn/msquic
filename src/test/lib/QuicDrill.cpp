@@ -213,8 +213,7 @@ struct DrillSender {
                 Binding,
                 &LocalAddress,
                 &ServerAddress,
-                SendData,
-                0);
+                SendData);
 
         return Status;
     }

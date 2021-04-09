@@ -2683,11 +2683,9 @@ CxPlatSocketSend(
     _In_ CXPLAT_SOCKET* Socket,
     _In_ const QUIC_ADDR* LocalAddress,
     _In_ const QUIC_ADDR* RemoteAddress,
-    _In_ CXPLAT_SEND_DATA* SendData,
-    _In_ uint16_t PartitionIndex
+    _In_ CXPLAT_SEND_DATA* SendData
     )
 {
-    UNREFERENCED_PARAMETER(PartitionIndex);
 #ifdef CX_PLATFORM_DISPATCH_TABLE
     return
         PlatDispatch->SocketSend(
