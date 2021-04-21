@@ -5128,7 +5128,7 @@ QuicConnRecvDatagrams(
             Connection->Stats.Recv.TotalPackets++;
 
             if (Connection->Stats.Recv.TotalPackets > 100) {
-                Connection->PacketTolerance = 200;
+                Connection->PacketTolerance = 100;
             }
 
             if (!Packet->ValidatedHeaderInv) {
