@@ -5127,6 +5127,10 @@ QuicConnRecvDatagrams(
             CXPLAT_DBG_ASSERT(Datagram->Allocated);
             Connection->Stats.Recv.TotalPackets++;
 
+            if (Connection->Stats.Recv.TotalPackets > 100) {
+                Connection->PacketTolerance = 200;
+            }
+
             if (!Packet->ValidatedHeaderInv) {
                 //
                 // Only calculate the buffer length from the available UDP
