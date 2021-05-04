@@ -19,8 +19,14 @@
 
 #define ASSERT_ON_FAILURE(x) \
     do { \
-        QUIC_STATUS _STATUS; \
-        CXPLAT_FRE_ASSERT(QUIC_SUCCEEDED((_STATUS = x))); \
+        QUIC_STATUS _STATUS = (x); \
+        if (Settings.AllocFailDenominator != 0) { \
+            if (!QUIC_SUCCEEDED(_STATUS)) { \
+                exit(_STATUS); \
+            } \
+        } else { \
+            CXPLAT_FRE_ASSERT(QUIC_SUCCEEDED(_STATUS)); \
+        } \
     } while (0)
 #define ASSERT_ON_NOT(x) CXPLAT_FRE_ASSERT(x)
 
@@ -50,6 +56,16 @@ public:
         return nullptr;
     }
 };
+
+static struct {
+    uint64_t RunTimeMs;
+    uint64_t MaxOperationCount;
+    const char* AlpnPrefix;
+    std::vector<uint16_t> Ports;
+    const char* ServerName;
+    uint8_t LossPercent;
+    int32_t AllocFailDenominator;
+} Settings;
 
 //
 // The amount of extra time (in milliseconds) to give the watchdog before
@@ -183,16 +199,6 @@ public:
         return nullptr;
     }
 };
-
-static struct {
-    uint64_t RunTimeMs;
-    uint64_t MaxOperationCount;
-    const char* AlpnPrefix;
-    std::vector<uint16_t> Ports;
-    const char* ServerName;
-    uint8_t LossPercent;
-    int32_t AllocFailDenominator;
-} Settings;
 
 QUIC_STATUS QUIC_API SpinQuicHandleStreamEvent(HQUIC Stream, void * /* Context */, QUIC_STREAM_EVENT *Event)
 {
