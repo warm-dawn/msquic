@@ -19,14 +19,8 @@
 
 #define ASSERT_ON_FAILURE(x) \
     do { \
-        QUIC_STATUS _STATUS = (x); \
-        if (Settings.AllocFailDenominator != 0) { \
-            if (!QUIC_SUCCEEDED(_STATUS)) { \
-                exit(_STATUS); \
-            } \
-        } else { \
-            CXPLAT_FRE_ASSERT(QUIC_SUCCEEDED(_STATUS)); \
-        } \
+        QUIC_STATUS _STATUS; \
+        CXPLAT_FRE_ASSERT(QUIC_SUCCEEDED((_STATUS = x))); \
     } while (0)
 #define ASSERT_ON_NOT(x) CXPLAT_FRE_ASSERT(x)
 
