@@ -432,7 +432,7 @@ CxPlatAlloc(
     CXPLAT_DBG_ASSERT(CxPlatform.Heap);
 #ifdef DEBUG
     uint32_t Rand;
-    if ((CxPlatform.AllocFailDenominator > 0 && (CxPlatRandom(sizeof(Rand), &Rand), Rand % CxPlatform.AllocFailDenominator) == 1) ||
+    if ((CxPlatform.AllocFailDenominator > 0 && (CxPlatform.AllocRng(sizeof(Rand), &Rand), Rand % CxPlatform.AllocFailDenominator) == 1) ||
         (CxPlatform.AllocFailDenominator < 0 && InterlockedIncrement(&CxPlatform.AllocCounter) % CxPlatform.AllocFailDenominator == 0)) {
         return NULL;
     }
