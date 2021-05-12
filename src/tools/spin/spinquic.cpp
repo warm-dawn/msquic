@@ -737,9 +737,7 @@ CXPLAT_THREAD_CALLBACK(ClientSpin, Context)
 
 BOOLEAN QUIC_API DatapathHookReceiveCallback(struct CXPLAT_RECV_DATA* /* Datagram */)
 {
-    uint8_t RandomValue;
-    CxPlatRandom(sizeof(RandomValue), &RandomValue);
-    return (RandomValue % 100) < Settings.LossPercent;
+    return (rand() % 100) < Settings.LossPercent;
 }
 
 BOOLEAN QUIC_API DatapathHookSendCallback(QUIC_ADDR* /* RemoteAddress */, QUIC_ADDR* /* LocalAddress */, struct CXPLAT_SEND_DATA* /* SendData */)
