@@ -1054,34 +1054,6 @@
       ],
       "macroName": "QuicTraceLogConnInfo"
     },
-    "RttUpdated": {
-      "ModuleProperites": {},
-      "TraceString": "[conn][%p] Updated Rtt=%u.%03u ms, Var=%u.%03u",
-      "UniqueId": "RttUpdated",
-      "splitArgs": [
-        {
-          "DefinationEncoding": "p",
-          "MacroVariableName": "arg1"
-        },
-        {
-          "DefinationEncoding": "u",
-          "MacroVariableName": "arg3"
-        },
-        {
-          "DefinationEncoding": "03u",
-          "MacroVariableName": "arg4"
-        },
-        {
-          "DefinationEncoding": "u",
-          "MacroVariableName": "arg5"
-        },
-        {
-          "DefinationEncoding": "03u",
-          "MacroVariableName": "arg6"
-        }
-      ],
-      "macroName": "QuicTraceLogConnVerbose"
-    },
     "NewSrcCidNameCollision": {
       "ModuleProperites": {},
       "TraceString": "[conn][%p] CID collision, trying again",
@@ -10174,34 +10146,6 @@
       ],
       "macroName": "QuicTraceLogInfo"
     },
-    "RttUpdatedMsg": {
-      "ModuleProperites": {},
-      "TraceString": "[conn][%p] Updated Rtt=%u.%03u ms, Var=%u.%03u",
-      "UniqueId": "RttUpdatedMsg",
-      "splitArgs": [
-        {
-          "DefinationEncoding": "p",
-          "MacroVariableName": "arg1"
-        },
-        {
-          "DefinationEncoding": "u",
-          "MacroVariableName": "arg3"
-        },
-        {
-          "DefinationEncoding": "03u",
-          "MacroVariableName": "arg4"
-        },
-        {
-          "DefinationEncoding": "u",
-          "MacroVariableName": "arg5"
-        },
-        {
-          "DefinationEncoding": "03u",
-          "MacroVariableName": "arg6"
-        }
-      ],
-      "macroName": "QuicTraceLogConnVerbose"
-    },
     "RemoveSendFlagsMsg": {
       "ModuleProperites": {},
       "TraceString": "[conn][%p] Removing flags %x",
@@ -10218,10 +10162,10 @@
       ],
       "macroName": "QuicTraceLogConnVerbose"
     },
-    "AckRangeMsg": {
+    "AckRangeEvt": {
       "ModuleProperites": {},
       "TraceString": "[strm][%p] Received ack for %d bytes, offset=%llu, FF=0x%hx",
-      "UniqueId": "AckRangeMsg",
+      "UniqueId": "AckRangeEvt",
       "splitArgs": [
         {
           "DefinationEncoding": "p",
@@ -10270,10 +10214,10 @@
       ],
       "macroName": "QuicTraceLogVerbose"
     },
-    "DatapathUnreachableMsg": {
+    "DatapathUnreachableEvt": {
       "ModuleProperites": {},
       "TraceString": "[sock][%p] Unreachable error from %!ADDR!",
-      "UniqueId": "DatapathUnreachableMsg",
+      "UniqueId": "DatapathUnreachableEvt",
       "splitArgs": [
         {
           "DefinationEncoding": "p",
@@ -10285,6 +10229,34 @@
         }
       ],
       "macroName": "QuicTraceLogVerbose"
+    },
+    "RttUpdatedEvt": {
+      "ModuleProperites": {},
+      "TraceString": "[conn][%p] Updated Rtt=%u.%03u ms, Var=%u.%03u",
+      "UniqueId": "RttUpdatedEvt",
+      "splitArgs": [
+        {
+          "DefinationEncoding": "p",
+          "MacroVariableName": "arg1"
+        },
+        {
+          "DefinationEncoding": "u",
+          "MacroVariableName": "arg3"
+        },
+        {
+          "DefinationEncoding": "03u",
+          "MacroVariableName": "arg4"
+        },
+        {
+          "DefinationEncoding": "u",
+          "MacroVariableName": "arg5"
+        },
+        {
+          "DefinationEncoding": "03u",
+          "MacroVariableName": "arg6"
+        }
+      ],
+      "macroName": "QuicTraceLogConnVerbose"
     }
   },
   "Version": 1,
@@ -13296,16 +13268,12 @@
         "TraceID": "InteropTestStop"
       },
       {
-        "UniquenessHash": "dc25a415-b386-47ec-0128-415c6f31795b",
-        "TraceID": "RttUpdatedMsg"
-      },
-      {
         "UniquenessHash": "b4aa5fad-d1de-466c-0214-1bbda4b9eb95",
         "TraceID": "RemoveSendFlagsMsg"
       },
       {
-        "UniquenessHash": "1f842f1b-027f-b5ec-e0ac-fc9491aeb629",
-        "TraceID": "AckRangeMsg"
+        "UniquenessHash": "4f56268f-806a-e01d-e193-5a5dde61da1c",
+        "TraceID": "AckRangeEvt"
       },
       {
         "UniquenessHash": "28f77853-916b-5ceb-e928-405aff056b0a",
@@ -13316,8 +13284,12 @@
         "TraceID": "TestReadIoctl"
       },
       {
-        "UniquenessHash": "29acd049-f710-a71e-1271-698510cfc519",
-        "TraceID": "DatapathUnreachableMsg"
+        "UniquenessHash": "5b79867a-669e-8ee4-dc4a-ef9145badecd",
+        "TraceID": "DatapathUnreachableEvt"
+      },
+      {
+        "UniquenessHash": "97928da3-4e6d-dbb1-7b6d-339a81700681",
+        "TraceID": "RttUpdatedEvt"
       }
     ]
   }
